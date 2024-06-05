@@ -1,0 +1,27 @@
+*, body {
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#cesiumContainer {
+    height: 100vh;
+}
+
+#toolbar {
+    position: fixed;
+    top: 60px;
+    left: 50px;
+    
+}
+#dropdown {
+    height: 48px;
+    font-size: 26px;
+    background-color: #161616;
+}
+
+.infoPanel {
+    visibility: hidden;
+    background-color: #161616;
+    color:azure;
+}
