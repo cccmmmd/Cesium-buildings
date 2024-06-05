@@ -3,28 +3,29 @@ import {
   Viewer,
   Terrain,
   createOsmBuildingsAsync,
-  Cartesian3,
-  Math,
+  ScreenSpaceEventHandler,
+  Cesium3DTileStyle,
+  ScreenSpaceEventType
 } from "cesium";
 import "cesium/Widgets/widgets.css";
 import "../css/main.css";
 import {defaultAccessToken, initLocation} from './cesiumConfig.js';
 
-const viewer = new Cesium.Viewer("cesiumContainer", {
-  terrain: Cesium.Terrain.fromWorldTerrain(),
+const viewer = new Viewer("cesiumContainer", {
+  terrain: Terrain.fromWorldTerrain(),
 });
-const spacehandler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+const spacehandler = new ScreenSpaceEventHandler(viewer.scene.canvas);
 
 // Add Cesium OSM buildings to the scene as our example 3D Tileset.
-const osmBuildingsTileset = await Cesium.createOsmBuildingsAsync();
+const osmBuildingsTileset = await createOsmBuildingsAsync();
 viewer.scene.primitives.add(osmBuildingsTileset);
 
 // Set the initial camera to look at Seattle
-viewer.scene.camera.setView(initLocation);
+viewer.camera.flyTo(initLocation);
 
 
 const colorByType = () => {
-  osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
+  osmBuildingsTileset.style = new Cesium3DTileStyle({
     defines: {
       building_type: "${feature['building']}",
       building_type2: "${feature['part#building:part']}",
@@ -50,7 +51,7 @@ const showResidential = () => {
   const buildingType = 'residential'
   switch (buildingType) {
       case "residential":
-        osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
+        osmBuildingsTileset.style = new Cesium3DTileStyle({
           show: "${feature['building']} === 'residential' || ${feature['building']} === 'apartments'",
         });
         break;
@@ -60,7 +61,7 @@ const showResidential = () => {
 }
 
 const highlightSchool = () => {
-  osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
+  osmBuildingsTileset.style = new Cesium3DTileStyle({
     color: {
       conditions: [
         [
@@ -76,7 +77,7 @@ const highlightSchool = () => {
 
 // Color the buildings based on their distance from a selected central location
 function colorByDistance(pLatitude, pLongitude) {
-  osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
+  osmBuildingsTileset.style = new Cesium3DTileStyle({
     defines: {
       distance: `distance(vec2(\${feature['cesium#longitude']}, \${feature['cesium#latitude']}), vec2(${pLongitude},${pLatitude}))`,
     },
@@ -93,7 +94,7 @@ function colorByDistance(pLatitude, pLongitude) {
 }
 
 const showByBuildingHeight = () => {
-  osmBuildingsTileset.style = new Cesium.Cesium3DTileStyle({
+  osmBuildingsTileset.style = new Cesium3DTileStyle({
     defines: {
       height: "Number(${feature['building:levels']})",
       height2: "Number(${feature['part#building:levels']})",
@@ -114,7 +115,7 @@ const showByBuildingHeight = () => {
 // remove the left click input event for selecting a central location
 function removePicking() {
   document.querySelector(".infoPanel").style.visibility = "hidden";
-  spacehandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
+  spacehandler.removeInputAction(ScreenSpaceEventType.LEFT_CLICK);
 }
 
 // Add event listeners to dropdown menu options
@@ -156,7 +157,7 @@ menu.options[1].onselect = function () {
      
       colorByDistance(platitude, plongitude);
     }
-  }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+  }, ScreenSpaceEventType.LEFT_CLICK);
 };
 
 menu.options[2].onselect = function () {
