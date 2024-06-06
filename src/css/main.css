@@ -10,7 +10,7 @@
 
 #toolbar {
     position: fixed;
-    top: 60px;
+    top: 40px;
     left: 50px;
     
 }
@@ -24,4 +24,6 @@
     visibility: hidden;
     background-color: #161616;
     color:azure;
+    margin-top: .8rem;
+    padding: 5px;
 }
