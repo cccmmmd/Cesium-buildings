@@ -34,11 +34,10 @@ const colorByType = () => {
       conditions: [ 
         ["${building_type} === null", "color('white')"],
         ["${building_type} === 'house'", "color('skyblue')"],
-        ["${building_type} === 'retail'", "color('violet')"],
-        ["${building_type} === 'residential'", "color('indianred')"], 
-        ["${building_type} === 'apartments'", "color('purple')"], 
-        ["${building_type} === 'public' || ${building_type} === 'government' || ${building_type} === 'stadium' || ${building_type} === 'hospital' || ${building_type} === 'construction' ", "color('green')"],
-        ["${building_type} === 'service'", "color('green')"],
+        ["${building_type} === 'retail' || ${building_type} === 'industrial'", "color('violet')"],
+        ["${building_type} === 'hotel'", "color('purple')"],
+        ["${building_type} === 'residential' || ${building_type} === 'apartments' || ${building_type} === 'house' ", "color('indianred')"], 
+        ["${building_type} === 'public' || ${building_type} === 'government' || ${building_type} === 'stadium' || ${building_type} === 'hospital' || ${building_type} === 'construction' || ${building_type} === 'service'", "color('green')"],
         ["${building_type} === 'school' || ${building_type} === 'university'", "color('dodgerblue')"],
         ["${building_type} === 'commercial' || ${building_type} === 'office' || ${building_type2} === 'commercial'", "color('yellow')"],
         [true, "color('white')"]
@@ -52,7 +51,7 @@ const showResidential = () => {
   switch (buildingType) {
       case "residential":
         osmBuildingsTileset.style = new Cesium3DTileStyle({
-          show: "${feature['building']} === 'residential' || ${feature['building']} === 'apartments'",
+          show: "${feature['building']} === 'residential' || ${feature['building']} === 'apartments' || ${feature['building']} === 'house'",
         });
         break;
       default:
