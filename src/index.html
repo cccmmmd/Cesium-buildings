@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <!-- Include the CesiumJS JavaScript and CSS files -->
-</head>
-<body>
-  <div id="cesiumContainer"></div>
-  <div id="toolbar">
-    <select class="cesium-button" id="dropdown">
-      <option value="0">依照建築樓層標示不同顏色</option>
-      <option value="1">依照選取建築的距離標示不同顏色</option>
-      <option value="2">依照建築類型標示不同顏色</option>
-      <option value="3">標示學校</option>
-      <option value="4">只顯示住宅和公寓</option>
-      
-    </select>
-    <div class="infoPanel">
-      <td>請點選一棟建築，周圍建築 會根據 選取建築 的距離呈現不同顏色</td>
-    </div>
-  </div>
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<!-- Include the CesiumJS JavaScript and CSS files -->
+	</head>
+	<body>
+		<div id="cesiumContainer"></div>
+		<div id="toolbar1">
+			<select class="cesium-button" id="dropdown1">
+				<option value="0">依照建築樓層標示不同顏色</option>
+				<option value="1">依照選取建築的距離標示不同顏色</option>
+				<option value="2">依照建築類型標示不同顏色</option>
+				<option value="3">標示學校</option>
+				<option value="4">只顯示住宅和公寓</option>
+			</select>
+			<div class="infoPanel">
+				<td>
+					請點選一棟建築，周圍建築 會根據 選取建築 的距離呈現不同顏色
+				</td>
+			</div>
+		</div>
+		<div id="toolbar2">
+			<select class="cesium-button" id="dropdown2">
+				<option value="0">台北</option>
+				<option value="1">台中</option>
+				<option value="2">高雄</option>
+			</select>
+		</div>
+	</body>
 </html>

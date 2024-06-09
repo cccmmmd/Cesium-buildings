@@ -8,22 +8,30 @@
     height: 100vh;
 }
 
-#toolbar {
+#toolbar1 {
     position: fixed;
     top: 40px;
-    left: 50px;
-    
+    left: 50px;   
 }
-#dropdown {
+#dropdown1 {
     height: 48px;
     font-size: 26px;
     background-color: #161616;
 }
-
 .infoPanel {
     visibility: hidden;
     background-color: #161616;
     color:azure;
     margin-top: .8rem;
     padding: 5px;
+}
+#toolbar2 {
+    position: fixed;
+    top: 40px;
+    left: 540px;   
+}
+#dropdown2 {
+    height: 48px;
+    font-size: 26px;
+    background-color: #161616;
 }
