@@ -1,8 +1,6 @@
 import { Cartesian3, Math } from "cesium";
-
-const defaultAccessToken =
-	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNjg4MmMxMC1kMjU0LTRhYzQtYjBjNy1jOGE5NjA0NDJhY2IiLCJpZCI6MjIwMTY1LCJpYXQiOjE3MTc1ODgxMjl9.iCZYMrdEM-Lhv-NODZyvN8I1If5zluGEoJrISx2_-ds";
-
+import config from './config';
+const defaultAccessToken = config.defaultAccessToken;
 const initLocation = {
 	destination: Cartesian3.fromDegrees(
 		121.56486743767994,

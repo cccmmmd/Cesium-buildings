@@ -7,11 +7,13 @@ import {
 	ScreenSpaceEventHandler,
 	Cesium3DTileStyle,
 	ScreenSpaceEventType,
+	Ion
 } from "cesium";
 import "cesium/Widgets/widgets.css";
 import "../css/main.css";
 import { defaultAccessToken, initLocation } from "./cesiumConfig.js";
 
+Ion.defaultAccessToken = defaultAccessToken;
 const viewer = new Viewer("cesiumContainer", {
 	terrain: Terrain.fromWorldTerrain(),
 });
